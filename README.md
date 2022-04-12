@@ -13,6 +13,7 @@ cypress-image-snapshot | 4.0.1+
 mocha | 8.4.0
 mochawesome | 6.2.2
 mochawesome-merge | 4.2.0
+testing-library/cypress | 8.0.2
 
 ## Usage:
 
