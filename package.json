@@ -10,15 +10,14 @@
     "cy:run": "cypress run"
   },
   "dependencies": {
+    "cypress": "13.12.0",
+    "typescript": "^5.5.2",
+    "dayjs": "^1.11.11",
     "cypress-image-snapshot": "github:0xIslamTaha/cypress-image-snapshot#v4.0.1+",
-    "@0xislamtaha/orchestrator": "github:0xislamtaha/orchestrator#2.1.0",
     "@types/mochawesome": "^6.2.4",
-    "@testing-library/cypress": "^10.0.2",
     "mocha": "^10.4.0",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.3.0",
-    "cypress": "13.12.0",
-    "typescript": "^5.5.2",
-    "dayjs": "^1.11.11"
+    "@testing-library/cypress": "^10.0.2"
   }
 }
