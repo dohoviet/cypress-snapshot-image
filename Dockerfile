@@ -28,5 +28,5 @@ COPY package.json package-lock.json ./
 RUN npm ci && npx cypress verify
 
 # Ensure orchestrator.js is in the right location
-COPY orchestrator.js ./node_modules/@0xislamtaha/orchestrator/src
+#COPY orchestrator.js ./node_modules/@0xislamtaha/orchestrator/src
 
