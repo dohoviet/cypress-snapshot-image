@@ -118,8 +118,9 @@ function extractDockerComposeOptions(config) {
 function getListOfSpecs(config, browser) {
   let existingSpecs = [];
 
-  if (config.specs.length > 0) {
-    existingSpecs = [...config.specs];
+  if (sh.env['CYPRESS_SPEC'].length > 0 && sh.env['CYPRESS_SPEC'] !== config.specsHomePath) {
+    // existingSpecs = [...config.specs];
+    existingSpecs = sh.env['CYPRESS_SPEC'].split(',').map(item => item.replace(config.specsHomePath, "").trim());
   } else {
     existingSpecs = sh
       .ls("-R", config.specsHomePath)
@@ -214,10 +215,10 @@ function _constructCypressCommands(config) {
   for (let i = 0; i < _noOfMachines; i++) {
     let bashCommand = "exit_code=0";
 
-    let _browsers = i % 2 ? config.browsers : config.browsers.reverse();
-    _browsers.forEach((browser) => {
-      bashCommand = `${bashCommand}; CYPRESS_TEST_ENV=${sh.env['CYPRESS_TEST_ENV']} npx cypress run -b ${browser} --headless --spec ${specsCommandsOverMachinesOrederedByBrowsers[browser][i]} || exit_code=$? ; pkill -9 cypress`;
-    });
+    // let _browsers = i % 2 ? config.browsers : config.browsers.reverse();
+    // _browsers.forEach((browser) => {
+      bashCommand = `${bashCommand}; CYPRESS_TEST_ENV=${sh.env['CYPRESS_TEST_ENV']} npx cypress run -b ${sh.env['BROWSER']} --headless --spec ${specsCommandsOverMachinesOrederedByBrowsers[sh.env['BROWSER']][i]} || exit_code=$? ; pkill -9 cypress`;
+    // });
 
     bashCommand = `${bashCommand} ; exit $exit_code`;
     bashCommands.push(bashCommand);

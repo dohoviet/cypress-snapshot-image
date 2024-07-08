@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     curl \
     gnupg2 \
+    jq \
     software-properties-common \
     && curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add - \
     && add-apt-repository \
@@ -27,5 +28,4 @@ COPY package.json package-lock.json ./
 RUN npm ci && npx cypress verify
 
 # Ensure orchestrator.js is in the right location
-COPY orchestrator.js ./node_modules/@0xislamtaha/orchestrator/src
-
+COPY orchestrator.js logger.js ./node_modules/@0xislamtaha/orchestrator/src/
