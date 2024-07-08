@@ -298,7 +298,7 @@ function _analyseReport(config) {
 }
 
 function afterPromises(config, timer) {
-  downContainers(config);
+  // downContainers(config);
   // generateReport(config).then(() => {
   //   console.timeEnd(timer);
   // });
